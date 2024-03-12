@@ -43,7 +43,15 @@ router.post('/login',async(req,res)=>{
    if(dataBaseUser[0][0]=== undefined){
     return res.json({message:'No User'})
    }
-   bcrypt.compare(password)
+   bcrypt.compare(password) 
+})
+
+router.post('/getUSer',async (req,res)=>{
+  const user = req.body.user
+  const query = ` SELECT * FROM new_table WHERE userName = ${user}`
+  const realUser = await db.query(query)
+
+  return res.json({user:realUser})
 })
 
 module.exports = router
