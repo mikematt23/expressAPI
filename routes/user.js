@@ -45,3 +45,5 @@ router.post('/login',async(req,res)=>{
    }
    bcrypt.compare(password)
 })
+
+module.exports = router
