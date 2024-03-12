@@ -54,7 +54,7 @@ router.post('/login',async(req,res)=>{
 
 router.post('/getUSer',async (req,res)=>{
   const user = req.body.user
-  const query = ` SELECT * FROM new_table WHERE userName = ${user}`
+  const query = ` SELECT * FROM new_table WHERE userName = '${user}'`
   const realUser = await db.query(query)
 
   return res.json({user:realUser})
