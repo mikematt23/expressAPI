@@ -60,4 +60,22 @@ router.post('/getUSer',async (req,res)=>{
   return res.json({user:realUser})
 })
 
+router.post('/updateLives',async (req,res)=>{
+   const user = req.body.userName
+   const lives = req.body.lives
+
+   const query = ` UPDATE new_table SET lives = ${lives} WHERE userName = "${user}"`
+   db.query(query)
+   return res.json({message:'updates'})
+})
+
+router.post('/updateLevel',async(req,res)=>{
+  const user = req.body.userName
+  const level = req.body.level
+
+  const query = `UPDATE new_table set level = ${level} WHERE userName = "${user}"`
+  db.query(query)
+  return res.json({message:'updated'})
+})
+
 module.exports = router
