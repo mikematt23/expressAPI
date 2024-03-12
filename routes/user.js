@@ -37,7 +37,7 @@ router.post('/login',async(req,res)=>{
    const password = req.body.password
    
    const query = `SELECT * FROM new_table WHERE userName = ${user}`
-   const dataBaseUser = db.query(query)
+   const dataBaseUser = await db.query(query)
    
    console.log(dataBaseUser)
    if(dataBaseUser[0][0]=== undefined){
