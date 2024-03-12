@@ -43,7 +43,13 @@ router.post('/login',async(req,res)=>{
    if(dataBaseUser[0][0]=== undefined){
     return res.json({message:'No User'})
    }
-   bcrypt.compare(password[0][0]) 
+   bcrypt.compare(password,dataBaseUser[0][0].password, async (err,result)=>{
+      if(result){
+        return res.json({user:dataBaseUser[0][0]})
+      }else{
+        res.json({message:"passwords dont match"})
+      }
+   }) 
 })
 
 router.post('/getUSer',async (req,res)=>{
